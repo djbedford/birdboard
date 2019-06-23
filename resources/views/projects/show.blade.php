@@ -15,15 +15,40 @@
                 <div class="mb-8">
                     <h2 class="text-grey font-normal text-lg mb-3">Tasks</h2>
                     @foreach($project->tasks as $task)
-                        <div class="card">{{ $task->body }}</div>
+                        <div class="card mb-3">
+                            <form action="{{ $task->path() }}" method="POST">
+                                @method('PATCH')
+                                @csrf
+                                <div class="flex">
+                                    <input
+                                        class="w-full {{ $task->completed ? 'text-grey' : '' }}"
+                                        type="text"
+                                        name="body"
+                                        value="{{ $task->body }}"
+                                    >
+                                    <input
+                                        type="checkbox"
+                                        name="completed"
+                                        onchange="this.form.submit()"
+                                        {{ $task->completed ? 'checked' : '' }}
+                                    >
+                                </div>
+                            </form>
+                        </div>
                     @endforeach
+                    <div class="card mb-3">
+                        <form action="{{ $project->path() . '/tasks' }}" method="POST">
+                            @csrf
+                            <input class="w-full" type="text" name="body" placeholder="Add a new task...">
+                        </form>
+                    </div>
                 </div>
                 <div>
                     <h2 class="text-grey font-normal text-lg mb-3">General Notes</h2>
                     <textarea class="card w-full" style="min-height: 200px">Lorem ipsum.</textarea>
                 </div>
             </div>
-            <div class="lg:w-1/4 px-3">
+            <div class="lg:w-1/4 px-3 lg:py-8">
                 @include('projects.card')
             </div>
         </div>
