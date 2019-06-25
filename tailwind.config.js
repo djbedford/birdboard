@@ -8,7 +8,8 @@ module.exports = {
         grey: 'rgba(0, 0, 0, 0.4)',
         'light-grey': '#f5f6f9',
         blue: '#47cdff',
-        'blue-light': '#8ae2fe'
+        'blue-light': '#8ae2fe',
+        red: '#ff0000',
       }
     }
   },
