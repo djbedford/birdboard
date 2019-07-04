@@ -40,7 +40,6 @@ trait RecordsActivity
         return [
             'created',
             'updated',
-            'deleted',
         ];
     }
 
