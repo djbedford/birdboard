@@ -18,6 +18,13 @@ class ProjectFactory
         return $this;
     }
 
+    public function ownedBy($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
     public function create()
     {
         $project = factory(Project::class)->create([
